@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&C FITNESS GYM - Fitness & Salud en Merlo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e91e63; /* Rosa fuerte */
+            --secondary-color: #ff80ab; /* Rosa claro */
+            --accent-color: #f48fb1; /* Rosa medio */
+            --light-color: #fff5f8; /* Rosa muy claro */
+            --dark-color: #880e4f; /* Rosa oscuro */
+            --gray-color: #8a6c7d; /* Gris rosado */
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header y Navegación */
+        header {
+            background-color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(233, 30, 99, 0.1);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        .logo-text {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--dark-color);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dark-color);
+        }
+        
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--gray-color);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border-color: var(--dark-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--dark-color);
+            color: white;
+            border-color: var(--dark-color);
+        }
+        
+        /* Sección de Clases */
+        .classes {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .class-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #ffe6ee;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.1);
+        }
+        
+        .class-icon {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .class-content {
+            padding: 25px;
+        }
+        
+        .class-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .class-content p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+        
+        .class-tag {
+            display: inline-block;
+            background-color: rgba(233, 30, 99, 0.1);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Sección de Ubicación */
+        .location {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .location-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .location-info {
+            flex: 1;
+        }
+        
+        .location-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .location-info p {
+            margin-bottom: 30px;
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+        
+        .location-details {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .location-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-details i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .map-container {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+            height: 400px;
+            border: 3px solid var(--light-color);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark-color), #ad1457);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-contact i {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .location-content {
+                flex-direction: column;
+            }
+            
+            .map-container {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(233, 30, 99, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .classes, .location {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <div class="logo-text">S&C<span>FITNESS</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#clases">Clases</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>TRANSFORMA TU <span>CUERPO</span>, MEJORA TU <span>VIDA</span></h1>
+            <p>En S&C FITNESS GYM ofrecemos una amplia variedad de clases dirigidas por profesionales para ayudarte a alcanzar tus objetivos fitness. ¡Ven a entrenar con nosotros en Merlo!</p>
+            <div class="hero-buttons">
+                <a href="#clases" class="btn">Ver Clases</a>
+                <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Clases -->
+    <section class="classes" id="clases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras Clases</h2>
+                <p>Ofrecemos una amplia variedad de disciplinas fitness para todos los niveles y objetivos.</p>
+            </div>
+            
+            <div class="classes-grid">
+                <!-- Clase 1 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Aeróbica</h3>
+                        <p>Mejora tu resistencia cardiovascular con nuestras clases de aeróbica de alta energía.</p>
+                        <span class="class-tag">Cardio</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 2 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Localizada</h3>
+                        <p>Tonifica y fortalece grupos musculares específicos con ejercicios localizados.</p>
+                        <span class="class-tag">Fuerza</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 3 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Zumba</h3>
+                        <p>Divertidas clases de baile que queman calorías mientras te diviertes al ritmo de la música.</p>
+                        <span class="class-tag">Baile</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 4 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>G.A.P (Glúteos, Abdominales, Piernas)</h3>
+                        <p>Enfócate en las zonas más demandadas con ejercicios específicos para glúteos, abdominales y piernas.</p>
+                        <span class="class-tag">Tonificación</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 5 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-fire-alt"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Entrenamiento Funcional</h3>
+                        <p>Mejora tu capacidad para realizar actividades diarias con movimientos funcionales y dinámicos.</p>
+                        <span class="class-tag">Funcional</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 6 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Step</h3>
+                        <p>Quema calorías y mejora tu coordinación con nuestras energéticas clases de step.</p>
+                        <span class="class-tag">Cardio</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 7 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Stretching</h3>
+                        <p>Aumenta tu flexibilidad, mejora tu postura y reduce el riesgo de lesiones con estiramientos guiados.</p>
+                        <span class="class-tag">Flexibilidad</span>
+                    </div>
+                </div>
+                
+                <!-- Clase 8 -->
+                <div class="class-card">
+                    <div class="class-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="class-content">
+                        <h3>Power Semi Personalizado</h3>
+                        <p>Entrenamiento de alta intensidad con atención semi-personalizada para maximizar tus resultados.</p>
+                        <span class="class-tag">HIIT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Ubicación -->
+    <section class="location" id="ubicacion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Ubicación</h2>
+                <p>Visítanos en nuestro local en Merlo, Buenos Aires. Te esperamos para que comiences tu transformación.</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>S&C FITNESS GYM</h3>
+                    <p>Somos un gimnasio comprometido con la salud y el bienestar de nuestra comunidad en Merlo. Contamos con instalaciones modernas y profesionales capacitados para guiarte en tu camino fitness.</p>
+                    
+                    <ul class="location-details">
+                        <li><i class="fas fa-map-marker-alt"></i> Formosa 2219, Merlo, Buenos Aires</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 6:00 - 22:00 hrs | Sábados: 8:00 - 18:00 hrs</li>
+                        <li>
+    <i class="fas fa-phone"></i> 
+    <a href="https://wa.me/5491112345678" target="_blank" style="color: inherit; text-decoration: none;">
+        +54 11 1234-5678
+    </a>
+</li>
+                        <li><i class="fas fa-envelope"></i> info@sycfitnessgym.com</li>
+                    </ul>
+                    
+                    <a href="https://www.instagram.com/sycfitnessgym?igsh=NWJsdzFmNXd3dmVo" target="_blank" class="btn">Síguenos en Instagram</a>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.234567890123!2d-58.728395!3d-34.665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc1234567890%3A0xabcdef123456789!2sFormosa%202219%2C%20Merlo%2C%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses!2ses!4v1234567890123!5m2!1ses!2ses" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">S&C<span>FITNESS</span></div>
+                    <p>Gimnasio líder en Merlo, comprometido con tu salud y bienestar. Ofrecemos clases variadas, entrenamiento personalizado y un ambiente motivador para que alcances tus objetivos fitness.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sycfitnessgym?igsh=NWJsdzFmNXd3dmVo" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Clases</h4>
+                    <ul>
+                        <li><a href="#clases">Aeróbica</a></li>
+                        <li><a href="#clases">Localizada</a></li>
+                        <li><a href="#clases">Zumba</a></li>
+                        <li><a href="#clases">G.A.P</a></li>
+                        <li><a href="#clases">Entrenamiento Funcional</a></li>
+                        <li><a href="#clases">Step</a></li>
+                        <li><a href="#clases">Stretching</a></li>
+                        <li><a href="#clases">Power Semi Personalizado</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Formosa 2219, Merlo, Buenos Aires</p>
+                    <p><i class="fas fa-phone"></i> +54 11 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> info@sycfitnessgym.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 6:00 - 22:00 hrs</p>
+                    <p><i class="fas fa-clock"></i> Sábados: 8:00 - 18:00 hrs</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 S&C FITNESS GYM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Cambiar icono del botón
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script src="reservas.js"></script>
+</body>
+</html>
